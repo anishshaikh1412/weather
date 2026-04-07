@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+      <div class="container">
+        <!-- Search Section -->
+        <div class="search-section">
+          <form class="search-form">
+            <span class="material-symbols-outlined">search</span>
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Enter city name"
+              value="London"
+              enterkeyhint="search"
+            />
+          </form>
+        </div>
+
+        <!-- Weather Section -->
+        <div class="weather-section">
+          <!-- Current Weather -->
+          <div class="current-weather">
+            <img alt="" class="weather-icon" />
+            <h2 class="temperature">
+              <span id="curr-temp"></span>
+            </h2>
+            <p class="description"></p>
+          </div>
+        </div>
+        <!-- End Weather Section -->
+      </div>
+      <!-- End Container -->
+
+    <script src="script.js"></script>
+  </body>
+</html>
