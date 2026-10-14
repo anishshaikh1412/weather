@@ -3,44 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
+    <meta name="theme-color" content="#eaf4ff" />
+    <meta name="description" content="Check current weather, humidity, wind speed, feels-like temperature, and a 5-day forecast." />
+    <title>Weatherly — Your Weather</title>
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   </head>
   <body>
-      <div class="container">
-        <!-- Search Section -->
-        <div class="search-section">
-          <form class="search-form">
-            <span class="material-symbols-outlined">search</span>
-            <input
-              type="text"
-              class="search-input"
-              placeholder="Enter city name"
-              value="London"
-              enterkeyhint="search"
-            />
-          </form>
+    <main class="container">
+      <header class="app-header">
+        <div class="brand-mark"><span class="material-symbols-outlined">partly_cloudy_day</span></div>
+        <div class="brand-copy">
+          <p class="eyebrow">YOUR DAILY FORECAST</p>
+          <h1>Weatherly</h1>
         </div>
+      </header>
 
-        <!-- Weather Section -->
-        <div class="weather-section">
-          <!-- Current Weather -->
-          <div class="current-weather">
-            <img alt="" class="weather-icon" />
-            <h2 class="temperature">
-              <span id="curr-temp"></span>
-            </h2>
-            <p class="description"></p>
-          </div>
+      <section class="search-section" aria-label="Search for a city">
+        <form class="search-form">
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+          <input type="text" class="search-input" placeholder="Search city (e.g. Mumbai)" value="Anand" aria-label="City name" autocomplete="off" required />
+          <button class="search-button" type="submit" aria-label="Get weather">
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          </button>
+        </form>
+      </section>
+
+      <p class="status-message" role="status" aria-live="polite"></p>
+
+      <section class="current-weather" aria-label="Current weather">
+        <p class="location-label"><span class="material-symbols-outlined" aria-hidden="true">location_on</span><span id="location-name">Search a city</span></p>
+        <p class="today-label" id="today-label">CURRENT CONDITIONS</p>
+        <img alt="" class="weather-icon" />
+        <h2 class="temperature"><span id="curr-temp">—</span></h2>
+        <p class="description">Search a city to get started</p>
+      </section>
+
+      <section class="details-grid" aria-label="Weather details">
+        <article class="detail-card">
+          <span class="detail-icon material-symbols-outlined" aria-hidden="true">device_thermostat</span>
+          <div><p class="detail-label">Feels like</p><p class="detail-value" id="feels-like">—</p></div>
+        </article>
+        <article class="detail-card">
+          <span class="detail-icon material-symbols-outlined" aria-hidden="true">humidity_percentage</span>
+          <div><p class="detail-label">Humidity</p><p class="detail-value" id="humidity">—</p></div>
+        </article>
+        <article class="detail-card">
+          <span class="detail-icon material-symbols-outlined" aria-hidden="true">air</span>
+          <div><p class="detail-label">Wind speed</p><p class="detail-value" id="wind-speed">—</p></div>
+        </article>
+      </section>
+
+      <section class="forecast-section" aria-label="5-day weather forecast">
+        <div class="section-heading">
+          <div><p class="eyebrow">PLAN AHEAD</p><h2>5-day forecast</h2></div>
+          <span class="material-symbols-outlined forecast-heading-icon" aria-hidden="true">calendar_month</span>
         </div>
-        <!-- End Weather Section -->
-      </div>
-      <!-- End Container -->
+        <div class="forecast-list" id="forecast-list">
+          <p class="forecast-placeholder">Your forecast will appear here.</p>
+        </div>
+      </section>
 
+      <footer><span class="material-symbols-outlined" aria-hidden="true">cloud</span> Weather data powered by OpenWeatherMap</footer>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
