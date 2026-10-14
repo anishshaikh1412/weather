@@ -6,7 +6,7 @@ const icon = document.querySelector(".weather-icon");
 
 // Add your OpenWeatherMap API key here for local testing.
 // Never commit a real key to a public repository.
-const API_KEY = "YOUR_OPENWEATHERMAP_API_KEY";
+const API_KEY = "fe0fd86ec7e2b7017c453cd4ee293547";
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
