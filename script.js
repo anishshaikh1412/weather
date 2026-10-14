@@ -4,32 +4,66 @@ const temp = document.querySelector("#curr-temp");
 const desc = document.querySelector(".description");
 const icon = document.querySelector(".weather-icon");
 
-const API = "66069e1d1c76bc2a9f211029b1cadc13";
+// Add your OpenWeatherMap API key here for local testing.
+// Never commit a real key to a public repository.
+const API_KEY = "YOUR_OPENWEATHERMAP_API_KEY";
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
   getWeather(input.value.trim());
 });
 
 async function getWeather(city) {
-  if (!city) return;
-
-  const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}&units=metric`
-  );
-  const data = await res.json();
-
-  if (data.cod !== 200) {
-    temp.textContent = "Error";
-    desc.textContent = "City not found";
-    icon.src = "images/no-result.svg";
+  if (!city) {
+    showMessage("Please enter a city name.");
     return;
   }
 
-  temp.textContent = data.main.temp + " °C";
-  desc.textContent = data.weather[0].description;
-  icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
+  if (API_KEY === "YOUR_OPENWEATHERMAP_API_KEY") {
+    showMessage("Add your OpenWeatherMap API key in script.js to get started.");
+    icon.removeAttribute("src");
+    return;
+  }
+
+  temp.textContent = "…";
+  desc.textContent = "Loading weather…";
+  icon.removeAttribute("src");
+
+  try {
+    const url = new URL("https://api.openweathermap.org/data/2.5/weather");
+    url.search = new URLSearchParams({
+      q: city,
+      appid: API_KEY,
+      units: "metric",
+    }).toString();
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("City not found. Check the spelling and try again.");
+      }
+      if (response.status === 401) {
+        throw new Error("API key is invalid or not active. Check your OpenWeatherMap account.");
+      }
+      throw new Error("Weather service is unavailable. Please try again.");
+    }
+
+    const data = await response.json();
+    temp.textContent = `${Math.round(data.main.temp)}°C`;
+    desc.textContent = data.weather[0].description;
+    icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
+    icon.alt = data.weather[0].description;
+  } catch (error) {
+    showMessage(error.message || "Could not load weather. Please try again.");
+    icon.removeAttribute("src");
+  }
 }
 
-// default city from input
-getWeather("London");
+function showMessage(message) {
+  temp.textContent = "—";
+  desc.textContent = message;
+}
+
+// Show a helpful initial state until a city is searched.
+getWeather(input.value.trim() || "London");
