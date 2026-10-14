@@ -1,35 +1,66 @@
 # Weather App
 
-A simple city-based weather application that retrieves current weather information from the OpenWeatherMap API and displays the temperature, weather description, and icon.
+A lightweight, responsive weather application built with HTML, CSS, and vanilla JavaScript. Search for a city to view its current temperature, weather condition, and matching weather icon.
 
 ## Features
-- Search weather by city name
-- Display temperature in Celsius
-- Show current weather description and icon
-- Responsive page structure
 
-## Built With
-- HTML5
-- CSS3
-- JavaScript
-- OpenWeatherMap API
+- Search current weather by city name
+- Temperature displayed in Celsius
+- Weather condition and icon from OpenWeatherMap
+- Responsive layout for desktop and mobile
+- Basic handling for unknown cities
+
+## Tech Stack
+
+- **HTML5** — page structure
+- **CSS3** — styling and responsive layout
+- **JavaScript** — form handling and API requests
+- **OpenWeatherMap API** — current weather data
 
 ## Getting Started
+
+### Prerequisites
+
+- A modern web browser
+- An OpenWeatherMap API key
+
+### Run locally
+
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/anishshaikh1412/weather.git
+   cd weather
    ```
-2. Open the project folder.
-3. Open `index.html` in your browser.
-4. Enter a city name to request its current weather.
 
-## Configuration and API Key
-The application currently contains an API key in `script.js`. For a public repository, do not commit private API keys. If this key is yours, consider rotating it and using a safer configuration or backend proxy before sharing the project publicly.
+2. Configure your API key in `script.js` (see the security note below).
+3. Open `index.html` in your browser. If your browser restricts local requests, use a simple local development server.
 
-## Troubleshooting
-- Check your internet connection.
-- Confirm the city name is spelled correctly.
-- If requests fail, check the OpenWeatherMap key and account/API limits.
+## Project Structure
+
+```text
+weather/
+├── index.html   # App markup
+├── style.css    # Responsive styles
+├── script.js    # Weather API integration
+└── README.md    # Project documentation
+```
+
+## API Key Security
+
+**Do not publish private API keys in a public repository.** The current client-side implementation has an API key in `script.js`, which can be read by anyone visiting the repository. If the key is yours, revoke or rotate it in your OpenWeatherMap account. For a production deployment, move API requests behind a backend or serverless function and keep secrets in environment variables. A key embedded in browser JavaScript cannot be kept secret.
+
+## Possible Improvements
+
+- Add humidity, wind speed, and feels-like temperature
+- Add loading and accessible error states
+- Add forecast support
+- Add automated tests and deployment workflow
 
 ## Author
+
 [anishshaikh1412](https://github.com/anishshaikh1412)
+
+---
+
+If you find this project useful, feel free to star the repository.
