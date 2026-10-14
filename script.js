@@ -11,9 +11,11 @@ const windSpeed = document.querySelector("#wind-speed");
 const forecastList = document.querySelector("#forecast-list");
 
  chore/professional-polish
+
 // Paste your OpenWeatherMap API key between the quotes.
 // For a public/production website, use a backend proxy: browser keys are visible.
 const API_KEY = "YOUR_OPENWEATHERMAP_API_KEY";
+
 // Add your OpenWeatherMap API key here for local testing.
 // Never commit a real key to a public repository.
 const API_KEY = "fe0fd86ec7e2b7017c453cd4ee293547";
